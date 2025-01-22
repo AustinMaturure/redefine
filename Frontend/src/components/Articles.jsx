@@ -8,7 +8,7 @@ export default function Articles() {
 
   useEffect(() => {
     axios
-      .get("/api/articles/")
+      .get(`${import.meta.env.VITE_API_URL}/articles/?page=1`)
       .then((response) => {
         setArticles(response.data);
         setLoading(false);
@@ -28,6 +28,7 @@ export default function Articles() {
         {articles.map((article) => (
           <div key={article.id}>
             <h2>{article.title}</h2>
+            <p>{article.date}</p>
           </div>
         ))}
       </div>

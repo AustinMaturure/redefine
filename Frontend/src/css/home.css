@@ -14,5 +14,6 @@
 .hero-text button {
   background-color: black;
   color: white;
-  border-radius: 22px;
+  border-radius: 26px;
+  padding: 0.5rem 2rem;
 }
