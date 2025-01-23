@@ -34,7 +34,7 @@ export default function Article() {
     <div>
       <div className="articles-cnt">
         <div className="article-header">
-          <h1>{article.header}</h1>
+          <h1>{article.title}</h1>
         </div>
         <p className="article-date">
           {new Intl.DateTimeFormat("en-GB", {

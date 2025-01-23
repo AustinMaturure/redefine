@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../css/articles.css";
-import Link from "react-dom";
+import { Link } from "react-router-dom";
+
 export default function Articles() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -21,7 +22,7 @@ export default function Articles() {
       setArticles((prevArticles) => [
         ...prevArticles,
         ...response.data.results,
-      ]); // Append new articles
+      ]);
     } catch (error) {
       console.error("Error fetching articles:", error);
     } finally {
@@ -43,17 +44,19 @@ export default function Articles() {
           <h1>Latest Blogs</h1>
         </div>
         {articles.map((article) => (
-          <div className="article-bob" key={article.id}>
-            <h2>{article.title}</h2>
-            <p> {`${article.body.substring(0, 100)}...`}</p>
-            <p className="article-date">
-              {new Intl.DateTimeFormat("en-GB", {
-                day: "2-digit",
-                month: "short",
-                year: "numeric",
-              }).format(new Date(article.date))}
-            </p>
-          </div>
+          <Link to={`/article/${article.id}`} key={article.id}>
+            <div className="article-bob">
+              <h2>{article.title}</h2>
+              <p> {`${article.body.substring(0, 100)}...`}</p>
+              <p className="article-date">
+                {new Intl.DateTimeFormat("en-GB", {
+                  day: "2-digit",
+                  month: "short",
+                  year: "numeric",
+                }).format(new Date(article.date))}
+              </p>
+            </div>
+          </Link>
         ))}
       </div>
       {loading ? (
