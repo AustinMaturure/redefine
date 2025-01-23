@@ -3,14 +3,17 @@ from .serializers import ArticleSerializer
 from rest_framework.decorators import api_view
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
-
+from rest_framework.pagination import PageNumberPagination
 
 @api_view(["GET"])
 def getArticles(request):
     articles = Article.objects.all() 
-    page = request.GET.get('page', 1) 
-    serializer = ArticleSerializer(articles, many=True)
-    return Response(serializer.data)
+    paginator = PageNumberPagination()   
+    paginated_articles = paginator.paginate_queryset(articles, request)  
+    serializer = ArticleSerializer(paginated_articles, many=True)
+    
+    return paginator.get_paginated_response(serializer.data)  
+    
 
 @api_view(["GET"])
 def getArticle(request,id):

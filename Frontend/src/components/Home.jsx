@@ -5,7 +5,7 @@ export default function Home() {
     <>
       <div className="hero-text">
         <h1>"Your word is a lamp to my feet and a light to my path"</h1>
-        <button>Latest Blogs</button>
+        <button>View Blogs</button>
       </div>
     </>
   );

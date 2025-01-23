@@ -1,0 +1,32 @@
+.articles-cnt {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  transition: all 0.5s;
+}
+
+.latest-header {
+  font-size: 2em;
+}
+
+.article-bob {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.article-bob h2 {
+  margin-bottom: 0;
+}
+.article-date {
+  justify-self: baseline;
+  font-size: 12px;
+}
+.load-more {
+  justify-self: center;
+  display: flex;
+  align-self: center;
+}

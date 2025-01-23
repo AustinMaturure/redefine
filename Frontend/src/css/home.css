@@ -11,9 +11,11 @@
   text-align: center;
 }
 
-.hero-text button {
+.hero-text button,
+.load-more {
   background-color: black;
   color: white;
   border-radius: 26px;
+  font-size: 1.2em;
   padding: 0.5rem 2rem;
 }
