@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Articles from "./components/Articles";
+import React from "react";
 
 function App() {
   return (
