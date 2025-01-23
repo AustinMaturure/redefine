@@ -32,7 +32,7 @@ export default function Article() {
 
   return (
     <div>
-      <div className="articles-cnt">
+      <div className="article-cnt">
         <div className="article-header">
           <h1>{article.title}</h1>
         </div>

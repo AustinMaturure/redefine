@@ -12,26 +12,34 @@ export default function Articles() {
   const handleNextPage = () => {
     setPageNr((prevPage) => prevPage + 1);
   };
-
-  const fetchArticles = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/articles?page=${pageNr}`
-      );
-      setArticles((prevArticles) => [
-        ...prevArticles,
-        ...response.data.results,
-      ]);
-    } catch (error) {
-      console.error("Error fetching articles:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    let isMounted = true;
+
+    const fetchArticles = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/articles?page=${pageNr}`
+        );
+        if (isMounted) {
+          setArticles((prevArticles) => [
+            ...prevArticles,
+            ...response.data.results,
+          ]);
+        }
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+        if (isMounted) setError("Failed to fetch articles");
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    };
+
     fetchArticles();
+
+    return () => {
+      isMounted = false;
+    };
   }, [pageNr]);
 
   if (loading) return <div>Loading...</div>;
@@ -40,9 +48,6 @@ export default function Articles() {
   return (
     <div>
       <div className="articles-cnt">
-        <div className="latest-header">
-          <h1>Latest Blogs</h1>
-        </div>
         {articles.map((article) => (
           <Link to={`/article/${article.id}`} key={article.id}>
             <div className="article-bob">
@@ -62,7 +67,12 @@ export default function Articles() {
       {loading ? (
         <></>
       ) : (
-        <button className="load-more" onClick={handleNextPage}>
+        <button
+          className="load-more"
+          onClick={() => {
+            handleNextPage();
+          }}
+        >
           Load More
         </button>
       )}
