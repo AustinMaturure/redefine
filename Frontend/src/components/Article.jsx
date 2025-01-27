@@ -18,6 +18,7 @@ export default function Article() {
 
   const fetchArticles = async () => {
     setArticleLoading(true);
+
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/articles/article/${slug}`
@@ -33,6 +34,7 @@ export default function Article() {
 
   useEffect(() => {
     fetchArticles();
+    setLike(0);
   }, [slug]);
 
   const fetchSnippets = async () => {
@@ -51,8 +53,9 @@ export default function Article() {
   useEffect(() => {
     fetchSnippets();
   }, []);
+
   const incLike = async () => {
-    if ((like = 0)) {
+    if (like == 0) {
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_API_URL}/article/like/${slug}`
@@ -116,7 +119,7 @@ export default function Article() {
         </article>
 
         <div className="more-articles">
-          <h2>More articles</h2>
+          <h2>More Blogs</h2>
           <div className="snippets">
             {snippets.map((snippet) => (
               <Link to={`/article/${snippet.slug}`} key={snippet.id}>

@@ -61,7 +61,8 @@
 }
 
 @media screen and (max-width: 768px) {
-  .articles-cnt {
+  .articles-cnt,
+  .articles-loading {
     display: flex;
     flex-direction: column;
   }
