@@ -1,3 +1,29 @@
+.articles-loading {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.article-skel {
+  background-color: gray;
+  height: 15rem;
+  min-width: 100%;
+  border-radius: 28px;
+  background: linear-gradient(90deg, #b8b7b7 25%, #efefef 50%, #acacac 75%);
+  background-size: 300% 100%;
+  animation: gradientLoading 2s infinite alternate;
+}
+
+@keyframes gradientLoading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
 .articles-cnt {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

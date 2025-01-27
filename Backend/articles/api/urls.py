@@ -3,7 +3,8 @@ from . import views
 
 urlpatterns = [
     path('articles/', views.getArticles),
-      path('snippets/', views.getArticleSnippets),
-    path('articles/article/<slug:slug>/', views.getArticle)
+    path('snippets/', views.getArticleSnippets),
+    path('articles/article/<slug:slug>/', views.getArticle),
+    path('article/like/<slug:slug>/', views.incLike)
 ]
 

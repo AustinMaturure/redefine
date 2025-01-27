@@ -1,5 +1,5 @@
 .nav-logo {
-  font-size: 1.4em;
+  font-size: 1.3em;
   margin: 0px;
 }
 
@@ -10,6 +10,8 @@ header {
   padding: 0.5rem 0.5rem;
   transition: all 0.5s;
   color: #f66d7e;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 header.sticky {

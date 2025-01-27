@@ -8,6 +8,7 @@ export default function Articles() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [pageNr, setPageNr] = useState(1);
+  const [hasNext, setHasNext] = useState(true);
 
   const handleNextPage = () => {
     setPageNr((prevPage) => prevPage + 1);
@@ -26,6 +27,7 @@ export default function Articles() {
             ...prevArticles,
             ...response.data.results,
           ]);
+          setHasNext(response.data.next != null);
         }
       } catch (error) {
         console.error("Error fetching articles:", error);
@@ -42,14 +44,24 @@ export default function Articles() {
     };
   }, [pageNr]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div className="articles-loading">
+        <div className="article-skel"></div>
+        <div className="article-skel"></div>
+        <div className="article-skel"></div>
+        <div className="article-skel"></div>
+        <div className="article-skel"></div>
+        <div className="article-skel"></div>
+      </div>
+    );
   if (error) return <div>{error}</div>;
 
   return (
     <div>
       <div className="articles-cnt">
         {articles.map((article) => (
-          <Link to={`/article/${article.id}`} key={article.id}>
+          <Link to={`/article/${article.slug}`} key={article.id}>
             <div className="article-bob">
               <h2>{article.title}</h2>
               <p> {`${article.body.substring(0, 100)}...`}</p>
@@ -66,7 +78,7 @@ export default function Articles() {
       </div>
       {loading ? (
         <></>
-      ) : (
+      ) : hasNext ? (
         <button
           className="load-more"
           onClick={() => {
@@ -75,6 +87,8 @@ export default function Articles() {
         >
           Load More
         </button>
+      ) : (
+        <></>
       )}
     </div>
   );

@@ -32,3 +32,14 @@ def getArticleSnippets(request):
     serializer = ArticleSnippetSerializer(snippets, many=True)
     return Response(serializer.data)
 
+@api_view(["GET"])
+def incLike(request,slug):
+
+    article = get_object_or_404(Article, slug=slug)   
+  
+    article.likes += 1
+    article.save()  
+
+    serializer = ArticleSerializer(article)
+    return Response("Like increased")
+

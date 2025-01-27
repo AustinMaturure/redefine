@@ -22,6 +22,10 @@
   top: 10px;
 }
 
+.snippet:hover {
+  color: #f66d7e;
+}
+
 .more-articles p {
   font-size: 0.9em;
   margin: 8px;
@@ -29,4 +33,38 @@
 
 .article-body {
   line-height: 2rem;
+}
+.end-txt {
+  font-style: italic;
+  text-align: right;
+  margin: 0;
+  padding: 6px;
+}
+
+.like-svg {
+  cursor: pointer;
+}
+.like-svg path {
+  transition: fill 0.3s ease;
+}
+.like-svg :hover path {
+  fill: #f66d7e;
+}
+
+.likes-div {
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .article-page-cnt {
+    flex-direction: column;
+    gap: 0rem;
+  }
+  .article-header {
+    font-size: 1.5em;
+  }
+  .more-articles {
+    padding: 1rem;
+  }
 }
