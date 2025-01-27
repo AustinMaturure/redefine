@@ -1,0 +1,23 @@
+.article-page-cnt {
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.article-cnt {
+  flex: 70%;
+  padding: 2rem;
+  padding-top: 0rem;
+}
+
+.more-articles {
+  flex: 30%;
+}
+.snippets {
+  border-radius: 22px;
+}
+
+.more-articles p {
+  font-size: 0.9em;
+  margin: 8px;
+}
