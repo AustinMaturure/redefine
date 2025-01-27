@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import axios from "axios";
 import "../css/article.css";
+import ReactMarkdown from "react-markdown";
 
 export default function Article() {
   const [article, setArticle] = useState([]);
@@ -67,7 +68,9 @@ export default function Article() {
               year: "numeric",
             }).format(new Date(article.date))}
           </p>
-          <p>{article.body}</p>
+          <ReactMarkdown className={"article-body"}>
+            {article.body}
+          </ReactMarkdown>
         </article>
         <div className="more-articles">
           <h2>More articles</h2>

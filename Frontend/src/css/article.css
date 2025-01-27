@@ -2,6 +2,9 @@
   display: flex;
   justify-content: space-between;
   gap: 4rem;
+  position: relative;
+  background-color: rgb(252, 252, 252);
+  border-radius: 22px;
 }
 
 .article-cnt {
@@ -15,9 +18,15 @@
 }
 .snippets {
   border-radius: 22px;
+  position: sticky;
+  top: 10px;
 }
 
 .more-articles p {
   font-size: 0.9em;
   margin: 8px;
+}
+
+.article-body {
+  line-height: 2rem;
 }

@@ -1,8 +1,29 @@
+import { useState, useEffect } from "react";
 import "../css/navbar.css";
+
 export default function Navbar() {
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const header = document.querySelector("header");
+      if (window.scrollY > 10) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <>
-      <h2 className="nav-logo">Redifine</h2>
-    </>
+    <header className={isSticky ? "sticky" : ""}>
+      <h2 className="nav-logo">
+        <a href="/">Redifine</a>
+      </h2>
+    </header>
   );
 }
