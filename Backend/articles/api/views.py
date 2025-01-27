@@ -1,5 +1,5 @@
 from articles.models import Article
-from .serializers import ArticleSerializer
+from .serializers import ArticleSerializer, ArticleSnippetSerializer
 from rest_framework.decorators import api_view
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
@@ -16,12 +16,19 @@ def getArticles(request):
     
 
 @api_view(["GET"])
-def getArticle(request,id):
+def getArticle(request,slug):
 
-    article = get_object_or_404(Article, id=id)   
+    article = get_object_or_404(Article, slug=slug)   
   
     article.views += 1
     article.save()  
 
     serializer = ArticleSerializer(article)
     return Response(serializer.data)
+
+@api_view(["GET"])
+def getArticleSnippets(request):
+    snippets = Article.objects.all()
+    serializer = ArticleSnippetSerializer(snippets, many=True)
+    return Response(serializer.data)
+
