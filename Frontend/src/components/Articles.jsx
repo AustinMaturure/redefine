@@ -79,14 +79,16 @@ export default function Articles() {
       {loading ? (
         <></>
       ) : hasNext ? (
-        <button
-          className="load-more"
-          onClick={() => {
-            handleNextPage();
-          }}
-        >
-          Load More
-        </button>
+        <div className="load-cnt">
+          <button
+            className="load-more"
+            onClick={() => {
+              handleNextPage();
+            }}
+          >
+            Load More
+          </button>
+        </div>
       ) : (
         <></>
       )}
