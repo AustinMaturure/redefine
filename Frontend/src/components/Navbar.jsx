@@ -22,7 +22,7 @@ export default function Navbar() {
   return (
     <header className={isSticky ? "sticky" : ""}>
       <h2 className="nav-logo">
-        <a href="/">Redifine</a>
+        <a href="/">Redefine</a>
       </h2>
     </header>
   );
