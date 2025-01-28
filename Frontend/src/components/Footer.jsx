@@ -5,7 +5,7 @@ export default function Footer() {
     <footer>
       <hr />
       <p className="copy-right">
-        &copy; {new Date().getFullYear()} Redifine. All rights reserved.
+        &copy; {new Date().getFullYear()} Redefine. All rights reserved.
         Designed and developed by{" "}
         <a
           className="austin-portfolio"
