@@ -67,7 +67,20 @@ export default function Article() {
     }
   };
 
-  if (articleLoading) return <div>Loading...</div>;
+  if (articleLoading)
+    return (
+      <>
+        <Navbar />
+        <div className="article-loading">
+          <div className=" skel-text">
+            <div className="skel skel-head"></div>
+            <div className="skel skel-body"></div>
+          </div>
+
+          <div className="skel skel-snip"></div>
+        </div>
+      </>
+    );
   if (error) return <div>{error}</div>;
 
   return (
@@ -121,13 +134,17 @@ export default function Article() {
         <div className="more-articles">
           <h2>More Blogs</h2>
           <div className="snippets">
-            {snippets.map((snippet) => (
-              <Link to={`/article/${snippet.slug}`} key={snippet.id}>
-                <div className="snippet">
-                  <p>{snippet.title}</p>
-                </div>
-              </Link>
-            ))}
+            {snippets.map((snippet) =>
+              snippet.slug != slug ? (
+                <Link to={`/article/${snippet.slug}`} key={snippet.id}>
+                  <div className="snippet">
+                    <p>{snippet.title}</p>
+                  </div>
+                </Link>
+              ) : (
+                <></>
+              )
+            )}
           </div>
         </div>
       </div>

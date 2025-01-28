@@ -41,6 +41,42 @@
   padding: 6px;
 }
 
+.article-loading {
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  gap: 1rem;
+}
+.skel-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100vh;
+  width: 100%;
+}
+
+.skel-head {
+  height: 3rem;
+  width: 100%;
+}
+
+.skel-body {
+  height: 100%;
+  min-width: 100%;
+  background-color: gray;
+}
+.skel-snip {
+  height: 15rem;
+  min-width: 100%;
+  background-color: gray;
+}
+.skel {
+  border-radius: 28px;
+  background: linear-gradient(90deg, #b8b7b7 25%, #efefef 50%, #acacac 75%);
+  background-size: 300% 100%;
+  animation: gradientLoading 2s infinite alternate;
+}
+
 .like-svg {
   cursor: pointer;
 }
@@ -60,6 +96,12 @@
   .article-page-cnt {
     flex-direction: column;
     gap: 0rem;
+  }
+
+  .article-loading {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
   }
   .article-header {
     font-size: 1.5em;
